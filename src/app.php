@@ -2,7 +2,7 @@
 
 // Autoloading, pas besoin de require partout pour charger nos classes et chargement
 // automatique de nos librairies
-require_once __DIR__ . "/../src/app.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 
 // Définitions de chemins utiles dans l'application
 define('TEMPLATES_DIR', __DIR__ . '/../templates/');
