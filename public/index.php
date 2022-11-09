@@ -3,6 +3,7 @@ require_once __DIR__ . "/../src/app.php";
 
 use App\Model\Animal;
 use App\Model\Equine;
+use App\Model\Event;
 use App\Model\Horse;
 use App\Model\Stable;
 use App\Model\Human;
@@ -23,5 +24,9 @@ $sheitland1 = new Sheitland("Boby", 3, 100, $rider1);
 $horse1 = new Horse("Jolly Jumper", 1, 800, $rider1);
 
 
-echo $sheitland1;
-echo $horse1;
+// echo $sheitland1;
+// echo $horse1;
+
+$event1 = new Event("jump", 5, 10);
+
+$event1->subscribeHorse(array($sheitland1, $horse1, $horse1));
