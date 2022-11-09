@@ -2,9 +2,10 @@
 namespace App\Model;
 
 use App\Model\Category;
+use App\Model\Able;
 use Exception;
 
-abstract class Equine extends Animal
+abstract class Equine extends Animal implements Able
 {
     //Properties
     //looking for an associative array including the color name and his hex code.
@@ -52,6 +53,9 @@ abstract class Equine extends Animal
             ________________________________________
         ";
     }
+
+
+    //GETTERS & SETTERS
 
     /**
      * Get the value of id
@@ -180,4 +184,15 @@ abstract class Equine extends Animal
 
         return $this;
     }
+
+    /**
+    * Function that return string of 'isCapable()' function in 'Capabilities' class.
+    *@return string
+    */
+    
+    public function getCapabilities(): string
+    {
+        return 'Equine is a capable entity.';
+    }
+
 }

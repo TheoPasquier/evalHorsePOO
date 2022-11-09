@@ -25,9 +25,17 @@ class Sheitland extends Equine
             Id : {$this->getId()}
             Color : {$this->getColor()}
             Water needed : {$this->getWater()}
+            Capabilities : ↓{$this->getCapabilities()}
             Rider : ↓{$this->rider}
             ________________________________________
         ";
+    }
+
+    public function getCapabilities(): string
+    {
+        $capabilitiesInstance = new Capabilities();
+        return $capabilitiesInstance->isCapable($this->getCategory());
+
     }
 
 }

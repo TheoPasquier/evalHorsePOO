@@ -1,7 +1,8 @@
 <?php
 namespace App\Model;
+use App\Model\Able;
 
-abstract class Animal
+abstract class Animal implements Able
 {
     //Properties
     protected const ROLE = [ null ,"runner","watcher"];
@@ -20,6 +21,10 @@ abstract class Animal
         return "Is an entity with capabilities";
     }
 
+    public function getCapabilities(): string
+    {
+        return "Animal is a capable entity.";
+    }
 
     /**
      * Get the value of name

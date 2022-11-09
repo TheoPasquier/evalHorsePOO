@@ -3,8 +3,9 @@ namespace App\Model;
 
 use App\Model\Equine;
 use App\Model\Rider;
+use App\Model\Able;
 
-class Horse extends Equine
+class Horse extends Equine implements Able
 {
 
     public function __construct(string $name, string $color, int $water, Rider $rider)
@@ -25,9 +26,17 @@ class Horse extends Equine
             Id : {$this->getId()}
             Color : {$this->getColor()}
             Water needed : {$this->getWater()}
+            Capabilities : ↓{$this->getCapabilities()}
             Rider : ↓{$this->rider}
             ________________________________________
         ";
+    }
+
+    public function getCapabilities(): string
+    {
+        $capabilitiesInstance = new Capabilities();
+        return $capabilitiesInstance->isCapable($this->getCategory());
+
     }
 
 }
