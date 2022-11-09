@@ -1,6 +1,7 @@
 <?php
 namespace App\Model;
 
+use App\Model\Category;
 use Exception;
 
 class Equine extends Animal
@@ -13,6 +14,8 @@ class Equine extends Animal
         "Pie",
         "Grey",
         "White");
+
+    protected Category $category;
 
     protected string $id;
     
@@ -27,8 +30,8 @@ class Equine extends Animal
     {
         parent::__construct($name, $role = parent::ROLE[1]);
         $this->setColor($color)
-            ->setWater($water);
-            $this->rider = $rider;
+            ->setWater($water)
+            ->setRider($rider);
             // $this->id = new IdSetter;
             $this->setId();
             self::$species++;
@@ -37,6 +40,8 @@ class Equine extends Animal
 
     public function __toString()
     {
+        //  Category: {$this->getCategory()}
+
         return " \n
             _______________________________________
             Name : {$this->getName()}
@@ -95,7 +100,6 @@ class Equine extends Animal
      */ 
     private function setColor($color): self
     {
-        //test
         $colorPossibilities = sizeof(self::COLORMAP);
         if(self::COLORMAP[$color] >= $colorPossibilities)
         {
@@ -129,6 +133,52 @@ class Equine extends Animal
     {
         
         $this->water = $water;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rider
+     * @return Rider
+     */ 
+    public function getRider(): Rider
+    {
+        return $this->rider;
+    }
+
+    /**
+     * Set the value of rider
+     *
+     * @return  self
+     */ 
+    public function setRider($rider)
+    {
+        $this->rider = $rider;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of category
+     * 
+     * @return Category
+     */ 
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category): self
+    {
+        //test
+        $a = new Category();
+        $a->setCategory($category);
+        $this->category = $category;
 
         return $this;
     }
