@@ -11,6 +11,10 @@ use App\Model\Manager;
 use App\Model\Rider;
 use App\Model\Sheitland;
 
+echo "/!\ Projet qui n'a pas été jusqu'au bout";
+
+// ----------------------------------------Instance----------------------------------------------
+
 $manager1 = new Manager("Antoine Daniel", "France", "Rue Vincent Bray", "12317", "Braypolis", "???");
 
 $stable1 = new Stable("Ecurie du soleil", "France", "Rue de la marinière", "1346", "VilleImaginaire", $manager1);
@@ -24,9 +28,11 @@ $sheitland1 = new Sheitland("Boby", 3, 100, $rider1);
 $horse1 = new Horse("Jolly Jumper", 1, 800, $rider1);
 
 
-// echo $sheitland1;
-// echo $horse1;
-
 $event1 = new Event("jump", 5, 10);
 
 $event1->subscribeHorse(array($sheitland1, $horse1, $horse1));
+
+// ----------------------------------------Display----------------------------------------------
+
+// echo $sheitland1;
+// echo $horse1;
