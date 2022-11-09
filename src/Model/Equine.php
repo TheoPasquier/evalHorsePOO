@@ -4,7 +4,7 @@ namespace App\Model;
 use App\Model\Category;
 use Exception;
 
-class Equine extends Animal
+abstract class Equine extends Animal
 {
     //Properties
     //looking for an associative array including the color name and his hex code.
@@ -15,7 +15,7 @@ class Equine extends Animal
         "Grey",
         "White");
 
-    protected Category $category;
+    protected string $category;
 
     protected string $id;
     
@@ -32,7 +32,6 @@ class Equine extends Animal
         $this->setColor($color)
             ->setWater($water)
             ->setRider($rider);
-            // $this->id = new IdSetter;
             $this->setId();
             self::$species++;
     }
@@ -160,25 +159,24 @@ class Equine extends Animal
 
     /**
      * Get the value of category
-     * 
-     * @return Category
+     * use the Category class to return string.
+     * @return string
      */ 
-    public function getCategory(): Category
+    public function getCategory(): string
     {
         return $this->category;
     }
 
     /**
      * Set the value of category
-     *
+     * use the Category class to return string.
      * @return  self
      */ 
     public function setCategory($category): self
     {
         //test
-        $a = new Category();
-        $a->setCategory($category);
-        $this->category = $category;
+        $categoryInstance = new Category();
+        $this->category = $categoryInstance->setCategory($category);
 
         return $this;
     }
