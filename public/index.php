@@ -16,6 +16,6 @@ $stable1 = new Stable("Ecurie du soleil", "France", "Rue de la marinière", "134
 
 $rider1 = new Rider("Antoine Daniel", "France", "Rue Vincent Bray", "12317", "Braypolis", "???");
 
-$equine1 = new Equine("Boby", "blue", 100, $rider1);
+$equine1 = new Equine("Boby", 1, 100, $rider1);
 
 echo $equine1;

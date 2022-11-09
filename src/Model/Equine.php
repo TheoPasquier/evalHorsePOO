@@ -1,11 +1,24 @@
 <?php
 namespace App\Model;
 
+use Exception;
+
 class Equine extends Animal
 {
     //Properties
+    //looking for an associative array including the color name and his hex code.
+    protected const COLORMAP = array(
+        "Alzan",
+        "Bai",
+        "Pie",
+        "Grey",
+        "White");
+
     protected string $id;
+    
+    //$color is an integer value to set but getter return string 
     protected string $color;
+
     protected int $water;
     protected Rider $rider;
     private static int $species = 0 ;
@@ -55,7 +68,7 @@ class Equine extends Animal
     {
         //pattern 000-n-C-N
 
-        $a = 0000;
+        $a = '0000';
         $b = substr ($this-> getName(),0 , 1);
         $c = substr ($this-> getColor(),0, 1);
         $d = self::$species;
@@ -82,7 +95,17 @@ class Equine extends Animal
      */ 
     private function setColor($color): self
     {
-        $this->color = $color;
+        //test
+        $colorPossibilities = sizeof(self::COLORMAP);
+        if(self::COLORMAP[$color] >= $colorPossibilities)
+        {
+            throw new Exception('No color defined : ['.$colorPossibilities.'] colors possibilities to select .');
+            $colorSet = 'Undefined';
+        } else{
+            $colorSet = self::COLORMAP[$color];
+        }
+
+        $this->color = $colorSet;
 
         return $this;
     }
@@ -104,6 +127,7 @@ class Equine extends Animal
      */ 
     private function setWater($water): self
     {
+        
         $this->water = $water;
 
         return $this;
